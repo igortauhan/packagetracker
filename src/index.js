@@ -5,6 +5,13 @@ const correios = require('./scripts/correios');
 // telegram bot instance
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
+// show this message when a chat start
+bot.start((ctx) => {
+    ctx.reply("Salve! Eu sou o packagetck bot e posso te ajudar a rastrear suas encomendas!" + "\n\n" +
+        "Como usar?" + "\nPara rastrear pacotes enviados pelos Correios, digite /correios e coloque o seu codigo na frente!" + "\n" +
+        "Exemplo: /correios AB123456789AB");
+});
+
 // listen the chat
 bot.on("text", (ctx) => {
     if (!ctx.message.from.is_bot) {
