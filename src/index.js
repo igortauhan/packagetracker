@@ -18,6 +18,11 @@ bot.on("text", (ctx) => {
         // args0 equals bot command, and args1 equals the code
         let args = ctx.message.text.split(" ");
         if (args[0] == "/correios") {
+            let regex = new RegExp("[A-Z]{2}[0-9]{9}[A-Z]{2}");
+            if (!regex.test(args[1])) {
+                ctx.reply("Utilize o codigo nesse estilo: AB123456789AB");
+                return;
+            }
             correios(args[1], ctx);
         }
     }
